@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -25,9 +23,6 @@ public class PlayerInput : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        RaycastHit2D _hit = Physics2D.Raycast(transform.position, m_PlayerDirection, 1.0f);
-        Debug.DrawRay(transform.position, m_PlayerDirection,Color.green);
-        Debug.Log(_hit.collider.name);
     }
 
     private void Move()
@@ -37,26 +32,25 @@ public class PlayerInput : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 m_PlayerDirection = Vector2.left;
-                //m_Rb2d.velocity = Vector2.left * m_PlayerSpeed;
+
                 m_CanMove = true;
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 m_PlayerDirection = Vector2.right;
-                //m_Rb2d.velocity = Vector2.right * m_PlayerSpeed;
+
                 m_CanMove = true;
             }
             else if (Input.GetKey(KeyCode.W))
             {
                 m_PlayerDirection = Vector2.up;
-                //m_Rb2d.velocity = Vector2.up * m_PlayerSpeed;
+
                 m_CanMove = true;
             }
             else if (Input.GetKey(KeyCode.S))
             {
                 m_PlayerDirection = Vector2.down;
 
-                //m_Rb2d.velocity = Vector2.down * m_PlayerSpeed;
                 m_CanMove = true;
             }
         }
@@ -64,25 +58,6 @@ public class PlayerInput : MonoBehaviour
         if (m_CanMove)
         {
             m_Rb2d.velocity = m_PlayerDirection * m_PlayerSpeed;
-        }
-    }
-
-    private bool IsValidDirection(Vector2 direction)
-    {
-        Vector2 _position = transform.position;
-
-        RaycastHit2D _hit = Physics2D.Raycast(_position, direction);
-        Debug.DrawRay(_position, direction, Color.green);
-        return _hit.collider.name == "Wall";
-    }
-
-    //no physic it dont work
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Wall")
-        {
-            m_CanMove = false;
-            Debug.Log("Collide a wall");
         }
     }
 }

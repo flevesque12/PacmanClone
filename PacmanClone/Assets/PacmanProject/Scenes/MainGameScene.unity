@@ -503,7 +503,7 @@ PrefabInstance:
     - target: {fileID: 8829356849296059833, guid: 585ea918fc087ea4f9c1303e1d6900ac,
         type: 3}
       propertyPath: m_PlayerSpeed
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8829356849296059837, guid: 585ea918fc087ea4f9c1303e1d6900ac,
         type: 3}
@@ -880,6 +880,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1693656479461563869, guid: d8a3e07b5a781fd4696c6b39b03152f4,
+        type: 3}
+      propertyPath: m_Speed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383753218950474597, guid: d8a3e07b5a781fd4696c6b39b03152f4,
+        type: 3}
+      propertyPath: m_Speed
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4793470200889302517, guid: d8a3e07b5a781fd4696c6b39b03152f4,
+        type: 3}
+      propertyPath: m_Speed
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7068873282460862704, guid: d8a3e07b5a781fd4696c6b39b03152f4,
         type: 3}
       propertyPath: m_Name
@@ -1120,6 +1135,11 @@ PrefabInstance:
       propertyPath: m_Waypoints.Array.data[34]
       value: 
       objectReference: {fileID: 1846692610}
+    - target: {fileID: 7068873282536551640, guid: d8a3e07b5a781fd4696c6b39b03152f4,
+        type: 3}
+      propertyPath: m_Speed
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8a3e07b5a781fd4696c6b39b03152f4, type: 3}
 --- !u!4 &1680808672 stripped

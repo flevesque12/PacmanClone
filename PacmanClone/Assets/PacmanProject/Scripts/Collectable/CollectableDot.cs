@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CollectableDot : MonoBehaviour
 {
@@ -20,6 +18,5 @@ public class CollectableDot : MonoBehaviour
             m_PlayerStats.CountDotEated();
             Destroy(this.gameObject);
         }
-
     }
 }

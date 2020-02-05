@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (m_PlayerLife == 0)
         {
-            //GameOverScreen();
+            GameOverScreen();
         }
 
         if (m_DotEated == m_DotCollectableCount)
@@ -58,7 +58,6 @@ public class PlayerStats : MonoBehaviour
     {
         GameManager.m_Instance.InitializeWinningScreen();
         m_TxtBestScore.text = m_PlayerScore.ToString();
-        Time.timeScale = 0;
     }
 
     public void AddScorePoint(int scoreValue)
@@ -84,7 +83,6 @@ public class PlayerStats : MonoBehaviour
             m_DotEated++;
         }
     }
-
 
     private void ReturnStartPosition()
     {
