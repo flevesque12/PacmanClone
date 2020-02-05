@@ -7,6 +7,7 @@ public class MenuNavigation : MonoBehaviour
     public void StartMainGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        Time.timeScale = 1;
     }
 
     public void QuitApplication()

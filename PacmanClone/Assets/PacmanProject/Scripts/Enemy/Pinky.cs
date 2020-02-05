@@ -53,15 +53,8 @@ public class Pinky : MonoBehaviour
         {
             if (collision.tag == "Player")
             {
-                m_PlayerStats.DecreaseLife();
-            }
-        }
-
-        if (m_IsVulnerable)
-        {
-            if (collision.tag == "Player")
-            {
-                m_PlayerStats.AddScorePoint(m_Point);
+                PlayerStats _playerStats = collision.gameObject.GetComponent<PlayerStats>();
+                _playerStats.DecreaseLife();
             }
         }
     }

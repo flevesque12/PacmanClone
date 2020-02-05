@@ -12,7 +12,7 @@ public class Blinky : MonoBehaviour
     private int m_CurrentWaypoint = 0;
     private Rigidbody2D m_Rb2d;
     private SpriteRenderer m_Render;
-    private PlayerStats m_PlayerStats;
+    
 
     #endregion
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class Blinky : MonoBehaviour
     {
         m_Rb2d = GetComponent<Rigidbody2D>();
         m_Render = GetComponent<SpriteRenderer>();
-        m_PlayerStats = FindObjectOfType<PlayerStats>();
+       
     }
     private void Update()
     {
@@ -48,21 +48,21 @@ public class Blinky : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
+    {     
+
+        if (m_IsVulnerable)
+        {
+            
+        }
+
         if (m_IsVulnerable == false)
         {
             if (collision.tag == "Player")
             {
-                m_PlayerStats.DecreaseLife();
+                PlayerStats _playerStats = collision.gameObject.GetComponent<PlayerStats>();
+                _playerStats.DecreaseLife();
             }
         }
 
-        if (m_IsVulnerable)
-        {
-            if (collision.tag == "Player")
-            {
-                m_PlayerStats.AddScorePoint(m_Point);
-            }
-        }
     }
 }

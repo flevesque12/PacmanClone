@@ -4,32 +4,60 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private GameObject[] m_DotGameObjectLists;
-    private int m_DotCollectableCount = 0;
-    private int m_DotEated = 0;
+    public static GameManager m_Instance;
+    
+    public GameObject m_WinningGamePanel;
+    public GameObject m_GameOverPanel;
+    
 
-    // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
-        m_DotGameObjectLists = GameObject.FindGameObjectsWithTag("Dot");
-        m_DotCollectableCount = m_DotGameObjectLists.Length;
-        Debug.Log("" + m_DotCollectableCount);
+        if (m_Instance == null)
+        {
+            m_Instance = this;
+        }
+        else if(m_Instance != null)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    private void Update()
+   
+    public void InitializeGameOverScreen()
     {
+        m_GameOverPanel.SetActive(true);
     }
 
+    public void InitializeWinningScreen()
+    {
+        m_WinningGamePanel.SetActive(true);
+    }
+    /*
     public void CountPlayerDotEaten()
-    {
-        if (m_DotEated <= m_DotCollectableCount)
+    {      
+        if(m_DotEated == m_DotCollectableCount)
+        {
+            m_GameOverPanel.SetActive(true);
+            //Debug.Log(m_DotEated);
+        }
+        else
         {
             m_DotEated++;
+            //Debug.Log(m_DotEated + "eaty");
+        }
+
+        
+        if (m_DotEated < m_DotCollectableCount)
+        {
+            m_DotEated++;
+            Debug.Log(m_DotEated);
         }
         else
         {
             Debug.Log("All dot are eated finish the stage");
-        }
-    }
+            m_GameOverPanel.SetActive(true);
+        }*/
+    //}
+
+    //ps he suposed to know when the player has depleted all his life and if he eated all the dots
 }

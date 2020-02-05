@@ -17,6 +17,7 @@ public class CollectableDot : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             m_PlayerStats.AddScorePoint(m_Point);
+            m_PlayerStats.CountDotEated();
             Destroy(this.gameObject);
         }
 
