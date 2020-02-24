@@ -57,22 +57,24 @@ namespace GridSystem
             {
                 for(int y = 0; y <= m_AmountVerticalCells; y++)
                 {
-                    bool walkable = Physics.CheckSphere(new Vector3(m_StartX + x, 0f, m_StartY + y), 0.4f, m_Unwalkable);
-                    m_GridNodes[x, y] = new Node(x, y, 0, walkable);
+                    //bool walkable = !Physics.CheckSphere(new Vector3(m_StartX + x, m_StartY + y, 0f), 0.4f, m_Unwalkable);
+                    bool walkable = Physics2D.OverlapCircle(new Vector3(m_StartX + x, m_StartY + y, 0f), 0.4f, m_Unwalkable);
+                    m_GridNodes[x, y] = new Node(x, y, NodeType.Open, walkable);
                 }
             }
         }
 
         private void OnDrawGizmos()
         {
-            //Gizmos.DrawWireCube(transform.position, new Vector3(((m_EndX - m_StartX) / m_CellWidth), ((m_EndY - m_StartY) / m_CellHeight), 0f));
+            Gizmos.DrawWireCube(transform.position, new Vector3(((m_EndX - m_StartX) / m_CellWidth), ((m_EndY - m_StartY) / m_CellHeight), 0f));
 
             if(m_GridNodes != null)
             {
                 foreach(Node node in m_GridNodes)
                 {
                     Gizmos.color = (node.m_IsWalkable) ? Color.white : Color.red;
-                    Gizmos.DrawWireCube(new Vector3(m_StartX + node.m_PosX, m_StartY + node.m_PosY, 0f), new Vector3(0.8f, 0.8f, 0.8f));
+                    //Gizmos.DrawWireCube(new Vector3(m_StartX + node.m_PosX, m_StartY + node.m_PosY, 0f), new Vector3(0.8f, 0.8f, 0.8f));
+                    Gizmos.DrawWireSphere(new Vector3(m_StartX + node.m_PosX, m_StartY + node.m_PosY, 0f), 0.4f);
                 }
             }
         }
