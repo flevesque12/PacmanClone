@@ -26,12 +26,14 @@ namespace GridSystem
 
 
         Node[,] m_GridNodes;
+        NodeView m_NodeView;
 
         public List<Node> m_path;
         public LayerMask m_Unwalkable;
 
         private void Awake()
         {
+            m_NodeView = GetComponent<NodeView>();
             CreateGrid();
         }
 
@@ -60,6 +62,7 @@ namespace GridSystem
                     //bool walkable = !Physics.CheckSphere(new Vector3(m_StartX + x, m_StartY + y, 0f), 0.4f, m_Unwalkable);
                     bool walkable = Physics2D.OverlapCircle(new Vector3(m_StartX + x, m_StartY + y, 0f), 0.4f, m_Unwalkable);
                     m_GridNodes[x, y] = new Node(x, y, NodeType.Open, walkable);
+                    //m_NodeView.InitNodeTile(m_GridNodes[x, y]);
                 }
             }
         }
